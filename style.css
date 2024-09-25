@@ -11,3 +11,8 @@ input{
     width: 200px;
     margin-top: 5px;
 }
+.back{
+    width: 600px;
+    height: 400px;
+    color: black;
+}
