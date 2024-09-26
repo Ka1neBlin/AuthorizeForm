@@ -3,10 +3,6 @@
     margin: 0;
     font-size: 20px;
 }
-.login{
-    margin-left: 45%;
-    margin-top: 20%;
-}
 input{
     width: 200px;
     margin-top: 5px;
@@ -15,4 +11,8 @@ input{
     width: 600px;
     height: 400px;
     color: black;
+    margin-left: 45%;
+    margin-top: 20%;
+    border: 3px;
+    border-color: black;
 }
