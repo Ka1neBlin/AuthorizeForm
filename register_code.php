@@ -1,5 +1,6 @@
 <?php
 require_once('connect.php');
+session_start();
 
 $login = $_POST['username'];
 $pass = $_POST['password'];
@@ -23,7 +24,9 @@ if(empty($login) || empty($pass) || empty($repeat)){
         $my_query = $conn->prepare("INSERT INTO Users(login, password) VALUES (:login, SHA(:password))");
         $my_query->execute(['login' => $login, 'password' => $pass]);
         if($my_query->rowCount() > 0){
-            echo "Добро пожаловать, " . $login;
+            $_SESSION['login'] = $login;
+            header('Location: user_page.php');
+            exit;
         }
         else{
             header("Location: errors.php?code=2");

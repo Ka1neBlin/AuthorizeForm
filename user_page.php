@@ -16,20 +16,12 @@
     </head>
     <body>
         <div>
-            <img src="yangyang.jpg" /><br>
+            <img src="aalto.png" />
             <h4>
                 <?php
-                    if(isset($_GET['code'])){
-                        switch($_GET['code']){
-                            case 1:
-                                echo "Ошибка подключения базы данных";
-                                break;
-                            case 2:
-                                echo "Ошибка запроса к базе данных";
-                                break;
-                            default:
-                                break;
-                        }
+                    session_start();
+                    if(isset($_SESSION['login'])){
+                        echo "Добро пожаловать, " . $_SESSION['login'] . "!";
                     }
                 ?>
             </h4>
