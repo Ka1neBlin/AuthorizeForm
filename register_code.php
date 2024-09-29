@@ -5,8 +5,6 @@ $login = $_POST['username'];
 $pass = $_POST['password'];
 $repeat = $_POST['repeat_password'];
 
-$hash = password_hash($pass, PASSWORD_DEFAULT);
-
 if(empty($login) || empty($pass) || empty($repeat)){
     header("Location: register.php?error=1");
     exit;
@@ -14,19 +12,21 @@ if(empty($login) || empty($pass) || empty($repeat)){
     header("Location: register.php?error=2");
     exit;
 } else {
-    $check_login = "SELECT * FROM Users WHERE login = '$login';";
-    $result = $conn->query($check_login);
-    if($result->$num_rows > 0){
+    $check = $conn->prepare("SELECT * FROM Users WHERE login = :login");
+    $check->execute(['login' => $login]);
+
+    if($check->rowCount() > 0){
         header('Location: register.php?error=3');
         exit;
-    }
-    else{
-        $my_query = "INSERT INTO Users (login, password) VALUES ('$login', '$hash');";
-        if($conn->query($my_query) == TRUE){
-            echo "Добро пожаловать, $login";
+    } else{
+        // В идеале бы соль добавить
+        $my_query = $conn->prepare("INSERT INTO Users(login, password) VALUES (:login, SHA(:password))");
+        $my_query->execute(['login' => $login, 'password' => $pass]);
+        if($my_query->rowCount() > 0){
+            echo "Добро пожаловать, " . $login;
         }
         else{
-            header('Location: errors.php?code=2');
+            header("Location: errors.php?code=2");
             exit;
         }
     }
