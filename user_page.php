@@ -19,7 +19,7 @@
             <img src="aalto.png" />
             <h4>
                 <?php
-                    session_start();
+                    session_start(); // Получение логина
                     if(isset($_SESSION['login'])){
                         echo "Добро пожаловать, " . $_SESSION['login'] . "!";
                     }

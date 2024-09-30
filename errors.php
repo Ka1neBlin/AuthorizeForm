@@ -19,6 +19,7 @@
             <img src="yangyang.jpg" /><br>
             <h4>
                 <?php
+                    // Получение кода ошибки
                     if(isset($_GET['code'])){
                         switch($_GET['code']){
                             case 1:

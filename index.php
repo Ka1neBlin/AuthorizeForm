@@ -12,6 +12,7 @@
                 <h4>Wuthering Waves rule 34</h4>
                 <p>
                     <?php
+                        // Получение кода ошибки
                         if(isset($_GET['error_log'])){
                             switch($_GET['error_log']){
                                 case 1:
