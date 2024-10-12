@@ -6,6 +6,14 @@
         <meta charset="utf-8">
         <title>Register</title>
     </head>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+    </style>
     <body>
         <div class="justify-content-center align-items-center"></div>
             <form action="register_code.php" method="post">

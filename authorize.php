@@ -20,7 +20,7 @@ if(empty($login) || empty($pass)){
         $row = $my_query->fetch(PDO::FETCH_ASSOC);
 
         // Проверка на учётную запись админа
-        if($row['login'] != 'admin'){
+        if($row['role'] != 'admin'){
             $_SESSION['login'] = $row['login']; // Передача логина на страницу пользователя
             header('Location: user_page.php'); // Переход на страницу пользователя
             exit;
